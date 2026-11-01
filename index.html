@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chem 1X Practice Problems</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f4f8;color:#222;line-height:1.65;}
+header{background:linear-gradient(135deg,#1a237e,#283593);color:white;padding:24px 32px;text-align:center;}
+header h1{font-size:1.85em;margin-bottom:6px;}
+header p{opacity:.85;font-size:1em;}
+.controls{background:#fff;padding:12px 20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;border-bottom:2px solid #e0e0e0;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.1);}
+.controls button{padding:8px 18px;border:none;border-radius:20px;cursor:pointer;font-size:.88em;font-weight:700;transition:all .2s;}
+.btn-exp{background:#1565c0;color:#fff;} .btn-col{background:#6d4c41;color:#fff;}
+.controls button:hover{transform:scale(1.05);opacity:.9;}
+.toc{background:#fff;margin:18px auto;max-width:920px;border-radius:12px;padding:22px 28px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.toc h2{color:#1a237e;margin-bottom:12px;font-size:1.2em;}
+.toc ol{padding-left:20px;column-count:2;column-gap:24px;}
+.toc li{margin:5px 0;}
+.toc a{color:#1565c0;text-decoration:none;font-weight:500;}
+.toc a:hover{text-decoration:underline;}
+.section{max-width:920px;margin:18px auto;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.09);}
+.sh{padding:16px 26px;color:#fff;display:flex;align-items:center;gap:12px;}
+.sh .num{background:rgba(255,255,255,.25);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:bold;flex-shrink:0;}
+.sh h2{font-size:1.15em;}
+.sh .fref{margin-left:auto;background:rgba(255,255,255,.2);border-radius:8px;padding:4px 10px;font-size:.78em;font-family:monospace;white-space:nowrap;}
+.s1 .sh{background:linear-gradient(135deg,#7b1fa2,#6a1b9a);}
+.s2 .sh{background:linear-gradient(135deg,#1565c0,#0d47a1);}
+.s3 .sh{background:linear-gradient(135deg,#c62828,#b71c1c);}
+.s4 .sh{background:linear-gradient(135deg,#2e7d32,#1b5e20);}
+.s5 .sh{background:linear-gradient(135deg,#e65100,#bf360c);}
+.s6 .sh{background:linear-gradient(135deg,#00695c,#004d40);}
+.s7 .sh{background:linear-gradient(135deg,#4527a0,#311b92);}
+.s8 .sh{background:linear-gradient(135deg,#0277bd,#01579b);}
+.s9 .sh{background:linear-gradient(135deg,#558b2f,#33691e);}
+.s10 .sh{background:linear-gradient(135deg,#d84315,#bf360c);}
+.s11 .sh{background:linear-gradient(135deg,#00838f,#006064);}
+.s12 .sh{background:linear-gradient(135deg,#6d4c41,#4e342e);}
+.s13 .sh{background:linear-gradient(135deg,#37474f,#263238);}
+.sb{background:#fff;padding:0 0 10px;}
+.prob{border-bottom:1px solid #f0f0f0;padding:18px 26px;}
+.prob:last-child{border-bottom:none;}
+.ptitle{font-weight:700;font-size:.97em;color:#333;margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.pbadge{background:#e8eaf6;color:#3949ab;border-radius:12px;padding:2px 10px;font-size:.75em;font-weight:600;}
+.pbadge.star{background:#fff3e0;color:#e65100;}
+.prob p{margin:7px 0;font-size:.95em;}
+.fbox{background:#f8f9fa;border-left:3px solid #aaa;padding:9px 14px;border-radius:0 8px 8px 0;margin:8px 0;font-family:monospace;font-size:.88em;color:#555;}
+.hbtn,.abtn{border:none;padding:6px 15px;border-radius:16px;cursor:pointer;font-size:.83em;font-weight:700;margin:8px 4px 0 0;transition:all .2s;}
+.hbtn{background:#fff3cd;color:#856404;border:1px solid #ffc107;}
+.hbtn:hover{background:#ffc107;color:#333;}
+.abtn{background:#d4edda;color:#155724;border:1px solid #28a745;}
+.abtn:hover{background:#28a745;color:#fff;}
+.hbox{display:none;background:#fffbea;border:1px solid #ffc107;border-radius:8px;padding:11px 15px;margin-top:10px;font-size:.88em;}
+.abox{display:none;background:#f0fff4;border:1px solid #28a745;border-radius:8px;padding:13px 17px;margin-top:10px;font-size:.9em;}
+.abox h4{color:#155724;margin-bottom:8px;font-size:.95em;}
+.step{margin:6px 0;padding-left:12px;border-left:2px solid #28a745;font-size:.9em;}
+.final{background:#155724;color:#fff;display:inline-block;padding:3px 12px;border-radius:8px;font-weight:bold;margin-top:8px;font-size:.9em;}
+.note{background:#e3f2fd;border-radius:8px;padding:9px 14px;margin:9px 0;font-size:.85em;color:#0d47a1;}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.88em;}
+th{background:#e8eaf6;padding:7px 11px;text-align:left;}
+td{padding:6px 11px;border-bottom:1px solid #eee;}
+footer{text-align:center;padding:28px;color:#888;font-size:.88em;}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚗️ Chem 1X — Midterm Mystery Practice Problems</h1>
+  <p>13 topics · 25 problems · Based on real student confusion reports · Use before your Zoom review session!</p>
+</header>
+
+<div class="controls">
+  <button class="btn-exp" onclick="toggleAll(true)">▼ Expand All Answers</button>
+  <button class="btn-col" onclick="toggleAll(false)">▲ Collapse All Answers</button>
+</div>
+
+<div class="toc">
+  <h2>📋 Table of Contents</h2>
+  <ol>
+    <li><a href="#s1">Heisenberg Uncertainty Principle</a></li>
+    <li><a href="#s2">Quantum Numbers (n, ℓ, m<sub>ℓ</sub>, m<sub>s</sub>)</a></li>
+    <li><a href="#s3">Photoelectric Effect &amp; Work Function</a></li>
+    <li><a href="#s4">Hydrogen Atom Energy Transitions</a></li>
+    <li><a href="#s5">Orbital Shapes, Nodes &amp; Nodal Planes</a></li>
+    <li><a href="#s6">Wien's Displacement Law (λ<sub>max</sub>)</a></li>
+    <li><a href="#s7">Ionization Energy Trends</a></li>
+    <li><a href="#s8">Electron Configuration (&amp; Anomalies)</a></li>
+    <li><a href="#s9">de Broglie Wavelength</a></li>
+    <li><a href="#s10">Photon Energy &amp; Wavelength Conversions</a></li>
+    <li><a href="#s11">Stoichiometry &amp; Mole Conversions</a></li>
+    <li><a href="#s12">Coulomb's Law &amp; Potential Energy</a></li>
+    <li><a href="#s13">Bonus: Wave-Particle Duality</a></li>
+  </ol>
+</div>
+
+<!-- ===== SECTION 1 ===== -->
+<div class="section s1" id="s1">
+  <div class="sh"><div class="num">1</div><h2>Heisenberg Uncertainty Principle</h2><div class="fref">Δx · Δp ≥ ℏ/2</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 1.1 — Electron Localization <span class="pbadge">Calculation</span></div>
+      <p>An electron is localized within a region of <b>Δx = 250 picometers</b>. What is the minimum uncertainty in its velocity, Δv<sub>min</sub>, in m/s? Report to two significant figures.<br>(m<sub>e</sub> = 9.109 × 10<sup>−31</sup> kg, ℏ = 1.0546 × 10<sup>−34</sup> J·s)</p>
+      <div class="fbox">Δv<sub>min</sub> = ℏ / (2 · m · Δx)</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Convert picometers to meters first: 250 pm = 250 × 10<sup>−12</sup> m = 2.50 × 10<sup>−10</sup> m. Then plug directly into the formula.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">Δx = 250 × 10<sup>−12</sup> m = 2.50 × 10<sup>−10</sup> m</div>
+        <div class="step">Δv = ℏ / (2 · m<sub>e</sub> · Δx) = (1.0546 × 10<sup>−34</sup>) / (2 × 9.109 × 10<sup>−31</sup> × 2.50 × 10<sup>−10</sup>)</div>
+        <div class="step">Denominator = 4.555 × 10<sup>−40</sup> kg·m</div>
+        <div class="step">Δv = 1.0546 × 10<sup>−34</sup> / 4.555 × 10<sup>−40</sup> = 2.315 × 10<sup>5</sup> m/s</div>
+        <span class="final">Δv<sub>min</sub> ≈ 2.3 × 10⁵ m/s</span>
+        <div class="note" style="margin-top:10px;">⚠️ This is enormous — nearly 0.08% the speed of light! Uncertainty is immense for subatomic particles.</div>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 1.2 — Electron vs. Bowling Ball <span class="pbadge">Comparison</span></div>
+      <p>Both an electron (m = 9.109 × 10<sup>−31</sup> kg) and a bowling ball (m = 5.0 kg) are confined to a position uncertainty of Δx = 1.0 nm. Calculate Δv<sub>min</sub> for each. What does the comparison reveal?</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Same formula, different masses. Note how much heavier the bowling ball is — mass is in the denominator, so a bigger mass means a smaller (and practically immeasurable) velocity uncertainty.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">Δx = 1.0 × 10<sup>−9</sup> m for both</div>
+        <div class="step"><b>Electron:</b> Δv = 1.0546×10<sup>−34</sup> / (2 × 9.109×10<sup>−31</sup> × 1.0×10<sup>−9</sup>) = <b>5.8 × 10<sup>4</sup> m/s</b></div>
+        <div class="step"><b>Bowling ball:</b> Δv = 1.0546×10<sup>−34</sup> / (2 × 5.0 × 1.0×10<sup>−9</sup>) = <b>1.1 × 10<sup>−26</sup> m/s</b> — effectively zero!</div>
+        <span class="final">Electron: ~5.8 × 10⁴ m/s (huge!) | Bowling ball: ~10⁻²⁶ m/s (unmeasurable)</span>
+        <div class="note" style="margin-top:8px;">Quantum uncertainty matters only at atomic/subatomic scales. For everyday objects, it is completely negligible.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 2 ===== -->
+<div class="section s2" id="s2">
+  <div class="sh"><div class="num">2</div><h2>Quantum Numbers (n, ℓ, m<sub>ℓ</sub>, m<sub>s</sub>)</h2><div class="fref">ℓ: 0→n−1 | m<sub>ℓ</sub>: −ℓ→+ℓ | m<sub>s</sub>: ±½</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 2.1 — Valid or Invalid? <span class="pbadge">Conceptual</span></div>
+      <p>For each set of quantum numbers, state <b>VALID</b> or <b>INVALID</b> and explain why if invalid:</p>
+      <table>
+        <tr><th>#</th><th>n</th><th>ℓ</th><th>m<sub>ℓ</sub></th><th>m<sub>s</sub></th></tr>
+        <tr><td>a</td><td>3</td><td>3</td><td>0</td><td>+½</td></tr>
+        <tr><td>b</td><td>2</td><td>1</td><td>−1</td><td>−½</td></tr>
+        <tr><td>c</td><td>4</td><td>0</td><td>1</td><td>+½</td></tr>
+        <tr><td>d</td><td>5</td><td>3</td><td>−2</td><td>+½</td></tr>
+        <tr><td>e</td><td>3</td><td>2</td><td>1</td><td>0</td></tr>
+      </table>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Three rules: (1) ℓ must be 0, 1, 2 … up to n−1. (2) m<sub>ℓ</sub> must be an integer from −ℓ to +ℓ. (3) m<sub>s</sub> can only be +½ or −½.</div>
+      <div class="abox"><h4>Answers</h4>
+        <div class="step"><b>a) INVALID</b> — When n = 3, ℓ can only be 0, 1, or 2. ℓ = 3 is not allowed.</div>
+        <div class="step"><b>b) VALID</b> — n=2, ℓ=1 (p orbital ✓), m<sub>ℓ</sub>=−1 ✓ (within −1 to +1), m<sub>s</sub>=−½ ✓</div>
+        <div class="step"><b>c) INVALID</b> — When ℓ = 0, the only allowed value is m<sub>ℓ</sub> = 0. m<sub>ℓ</sub> = 1 is not permitted.</div>
+        <div class="step"><b>d) VALID</b> — n=5, ℓ=3 (f orbital ✓ since ℓ ≤ 4), m<sub>ℓ</sub>=−2 ✓, m<sub>s</sub>=+½ ✓</div>
+        <div class="step"><b>e) INVALID</b> — m<sub>s</sub> = 0 is not allowed. Spin must be exactly +½ or −½.</div>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 2.2 — The 4f Subshell <span class="pbadge">Enumeration</span></div>
+      <p>For the <b>4f subshell</b>: (a) What are all allowed values of m<sub>ℓ</sub>? (b) How many orbitals are in this subshell? (c) What is the maximum number of electrons it can hold?</p>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="abox"><h4>Answers</h4>
+        <div class="step">4f: n = 4, ℓ = 3</div>
+        <div class="step">(a) m<sub>ℓ</sub> = −3, −2, −1, 0, +1, +2, +3 &nbsp;(seven values)</div>
+        <div class="step">(b) # orbitals = 2ℓ + 1 = 2(3) + 1 = <b>7 orbitals</b></div>
+        <div class="step">(c) Max electrons = 7 × 2 = <b>14 electrons</b></div>
+        <span class="final">4f: 7 orbitals, max 14 electrons</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 3 ===== -->
+<div class="section s3" id="s3">
+  <div class="sh"><div class="num">3</div><h2>Photoelectric Effect &amp; Work Function</h2><div class="fref">KE = hν − Φ | v = √(2KE/mₑ)</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 3.1 — Find Electron Speed from λ and Φ <span class="pbadge">Multi-step</span></div>
+      <p>A metal has a work function Φ = 2.20 eV. Light of wavelength <b>410 nm</b> strikes the surface. (a) What is the frequency of the light? (b) What is the photon energy in eV? (c) What is the kinetic energy of the ejected electron in eV? (d) What is the electron's speed?<br>(m<sub>e</sub> = 9.109 × 10<sup>−31</sup> kg, 1 eV = 1.602 × 10<sup>−19</sup> J)</p>
+      <div class="fbox">E<sub>photon</sub> = hc/λ &nbsp;|&nbsp; KE = E<sub>photon</sub> − Φ &nbsp;|&nbsp; v = √(2·KE/m<sub>e</sub>)</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Three formulas in sequence — exactly the type of chained calculation students found confusing. Work left to right: λ → ν → E<sub>photon</sub>(eV) → KE → v. Convert eV ↔ J carefully!</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">(a) ν = c/λ = (3.00×10<sup>8</sup> m/s) / (410×10<sup>−9</sup> m) = <b>7.32 × 10<sup>14</sup> Hz</b></div>
+        <div class="step">(b) E<sub>photon</sub> = hν = (6.626×10<sup>−34</sup>)(7.32×10<sup>14</sup>) = 4.85×10<sup>−19</sup> J ÷ 1.602×10<sup>−19</sup> = <b>3.03 eV</b></div>
+        <div class="step">(c) KE = 3.03 − 2.20 = <b>0.83 eV</b> = 0.83 × 1.602×10<sup>−19</sup> = 1.33 × 10<sup>−19</sup> J</div>
+        <div class="step">(d) v = √(2 × 1.33×10<sup>−19</sup> / 9.109×10<sup>−31</sup>) = √(2.92×10<sup>11</sup>) = <b>5.4 × 10<sup>5</sup> m/s</b></div>
+        <span class="final">Electron speed ≈ 5.4 × 10⁵ m/s</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 3.2 — Find the Work Function (from Exam PDF) <span class="pbadge star">⭐ Direct Exam Problem</span></div>
+      <p>In a photoelectric effect experiment, light of wavelength <b>532.0 nm</b> hits a clean metal surface. The fastest ejected electrons have a speed of <b>3.41 × 10<sup>5</sup> m/s</b>.<br>(a) Find the frequency ν of the light in Hz. (b) Find the photon energy in eV. (c) Find the work function Φ in eV.</p>
+      <div class="fbox">Φ = E<sub>photon</sub> − ½m<sub>e</sub>v²</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">This is the reverse of Problem 3.1 — you know the electron's speed, so calculate KE first (½mv²), then subtract it from E<sub>photon</sub> to find Φ.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">(a) ν = c/λ = 3.00×10<sup>8</sup> / 532.0×10<sup>−9</sup> = <b>5.639 × 10<sup>14</sup> Hz</b></div>
+        <div class="step">(b) E<sub>photon</sub> = hν = 6.626×10<sup>−34</sup> × 5.639×10<sup>14</sup> = 3.736×10<sup>−19</sup> J ÷ 1.602×10<sup>−19</sup> = <b>2.33 eV</b></div>
+        <div class="step">(c) KE = ½m<sub>e</sub>v² = ½ × 9.109×10<sup>−31</sup> × (3.41×10<sup>5</sup>)<sup>2</sup> = 5.30×10<sup>−20</sup> J = 0.331 eV</div>
+        <div class="step">Φ = 2.33 − 0.33 = <b>2.00 eV</b></div>
+        <span class="final">Φ ≈ 2.00 eV</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 4 ===== -->
+<div class="section s4" id="s4">
+  <div class="sh"><div class="num">4</div><h2>Hydrogen Atom Energy Transitions</h2><div class="fref">Eₙ = −13.598 eV / n²</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 4.1 — Balmer Series: n=6 → n=2 <span class="pbadge star">⭐ 45% Missed on Exam</span></div>
+      <p>A hydrogen electron transitions from n = 6 to n = 2. (a) Calculate the energy of the emitted photon in eV. (b) Calculate the wavelength λ in nm. (c) Is this UV, visible, or IR?<br>Use E<sub>n</sub> = −2.18 × 10<sup>−18</sup> J × (1/n²).</p>
+      <div class="fbox">ΔE = E<sub>final</sub> − E<sub>initial</sub> &nbsp;|&nbsp; λ = hc / |ΔE|</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Calculate E<sub>6</sub> and E<sub>2</sub> separately, then ΔE = E<sub>2</sub> − E<sub>6</sub>. A negative ΔE means emission (energy leaves the atom). Use |ΔE| in the wavelength formula.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">E<sub>6</sub> = −2.18×10<sup>−18</sup> × (1/36) = −6.056 × 10<sup>−20</sup> J</div>
+        <div class="step">E<sub>2</sub> = −2.18×10<sup>−18</sup> × (1/4) = −5.45 × 10<sup>−19</sup> J</div>
+        <div class="step">ΔE = E<sub>2</sub> − E<sub>6</sub> = −5.45×10<sup>−19</sup> − (−6.056×10<sup>−20</sup>) = −4.844 × 10<sup>−19</sup> J &nbsp;(negative → emission ✓)</div>
+        <div class="step">λ = hc/|ΔE| = (1.988×10<sup>−25</sup>) / (4.844×10<sup>−19</sup>) = 4.10×10<sup>−7</sup> m = <b>410 nm</b></div>
+        <div class="step">410 nm is <b>visible violet light</b> (Balmer series — all transitions ending at n=2 are visible).</div>
+        <span class="final">λ ≈ 410 nm — visible violet (Balmer series)</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 4.2 — 3p → 1s Emission in eV <span class="pbadge">Calculation</span></div>
+      <p>A hydrogen atom has its electron in a 3p orbital. It transitions to 1s and emits light. (a) Calculate the emitted photon energy in eV to three significant digits. (b) Find the wavelength in nm.<br>Use E<sub>n</sub> = −13.598 eV / n².</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">E<sub>photon</sub> = |E<sub>1</sub> − E<sub>3</sub>|. Calculate each level, subtract, and take the absolute value — that's the energy of the emitted photon.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">E<sub>1</sub> = −13.598 / 1² = −13.598 eV</div>
+        <div class="step">E<sub>3</sub> = −13.598 / 3² = −13.598 / 9 = −1.511 eV</div>
+        <div class="step">E<sub>photon</sub> = |E<sub>1</sub> − E<sub>3</sub>| = |−13.598 − (−1.511)| = <b>12.1 eV</b></div>
+        <div class="step">Convert to J: 12.087 × 1.602×10<sup>−19</sup> = 1.937×10<sup>−18</sup> J</div>
+        <div class="step">λ = 1.988×10<sup>−25</sup> / 1.937×10<sup>−18</sup> = 1.026×10<sup>−7</sup> m = <b>102.6 nm</b> (UV — Lyman series)</div>
+        <span class="final">E<sub>photon</sub> = 12.1 eV &nbsp;|&nbsp; λ ≈ 103 nm (UV)</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 4.3 — Ionization Wavelength from Ground State <span class="pbadge">Conceptual + Calc</span></div>
+      <p>A hydrogen atom is in the ground state (n = 1, ℓ = 0). What is the longest-wavelength photon that could ionize the atom (promote the electron to n → ∞)? Report λ in nm to three significant figures.</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">At n = ∞, E<sub>∞</sub> = 0. So the required photon energy equals exactly |E<sub>1</sub>|. "Longest wavelength" means minimum photon energy — just barely enough to ionize.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">E<sub>∞</sub> = 0 &nbsp;|&nbsp; E<sub>1</sub> = −13.598 eV</div>
+        <div class="step">Required energy = 0 − (−13.598) = 13.598 eV = 13.598 × 1.602×10<sup>−19</sup> = 2.179 × 10<sup>−18</sup> J</div>
+        <div class="step">λ = hc/E = 1.988×10<sup>−25</sup> / 2.179×10<sup>−18</sup> = 9.12 × 10<sup>−8</sup> m = <b>91.2 nm</b></div>
+        <div class="step">This is the <b>Lyman series limit</b> — extreme ultraviolet (far UV).</div>
+        <span class="final">λ<sub>ionization</sub> = 91.2 nm (extreme UV)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 5 ===== -->
+<div class="section s5" id="s5">
+  <div class="sh"><div class="num">5</div><h2>Orbital Shapes, Nodes &amp; Nodal Planes</h2><div class="fref">Radial = n−ℓ−1 | Angular = ℓ | Total = n−1</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 5.1 — Node Counting Table <span class="pbadge">Conceptual</span></div>
+      <p>Complete the table — find radial nodes, angular nodes, and total nodes for each orbital:</p>
+      <table>
+        <tr><th>Orbital</th><th>n</th><th>ℓ</th><th>Radial nodes (n−ℓ−1)</th><th>Angular nodes (ℓ)</th><th>Total (n−1)</th></tr>
+        <tr><td>1s</td><td>1</td><td>0</td><td>?</td><td>?</td><td>?</td></tr>
+        <tr><td>2s</td><td>2</td><td>0</td><td>?</td><td>?</td><td>?</td></tr>
+        <tr><td>2p</td><td>2</td><td>1</td><td>?</td><td>?</td><td>?</td></tr>
+        <tr><td>3s</td><td>3</td><td>0</td><td>?</td><td>?</td><td>?</td></tr>
+        <tr><td>3p</td><td>3</td><td>1</td><td>?</td><td>?</td><td>?</td></tr>
+        <tr><td>3d</td><td>3</td><td>2</td><td>?</td><td>?</td><td>?</td></tr>
+      </table>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="abox"><h4>Completed Table</h4>
+        <table>
+          <tr><th>Orbital</th><th>Radial nodes</th><th>Angular nodes</th><th>Total nodes</th></tr>
+          <tr><td>1s</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>2s</td><td>1</td><td>0</td><td>1</td></tr>
+          <tr><td>2p</td><td>0</td><td>1</td><td>1</td></tr>
+          <tr><td>3s</td><td>2</td><td>0</td><td>2</td></tr>
+          <tr><td>3p</td><td>1</td><td>1</td><td>2</td></tr>
+          <tr><td>3d</td><td>0</td><td>2</td><td>2</td></tr>
+        </table>
+        <div class="note">💡 Pattern: total nodes always = n − 1. As ℓ increases (more angular nodes), radial nodes decrease to compensate.</div>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 5.2 — Orbital Descriptions + Nodal Planes of 3d<sub>xy</sub> <span class="pbadge star">⭐ Direct Exam Question</span></div>
+      <p>For each orbital: describe the shape, state the number of each type of node, and identify any nodal planes.<br><b>Orbitals: 3s &nbsp;|&nbsp; 2p<sub>y</sub> &nbsp;|&nbsp; 3d<sub>xy</sub> &nbsp;|&nbsp; 3d<sub>z²</sub></b></p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">The subscript tells you orientation (p<sub>y</sub> points along y; d<sub>xy</sub> has lobes between x and y axes). The ± phase signs on lobes are just math signs of ψ — not charges! Angular nodes for d orbitals (ℓ=2) are planes, except d<sub>z²</sub> which has conical nodes.</div>
+      <div class="abox"><h4>Orbital Descriptions</h4>
+        <div class="step"><b>3s:</b> Spherical. 2 radial nodes (two concentric spherical shells), 0 nodal planes. Three concentric regions of alternating wavefunction phase (+/−/+).</div>
+        <div class="step"><b>2p<sub>y</sub>:</b> Dumbbell shape with two lobes oriented along the <b>y-axis</b>. 0 radial nodes, 1 nodal plane — the <b>xz-plane</b>. Upper and lower lobes have opposite phase signs.</div>
+        <div class="step"><b>3d<sub>xy</sub>:</b> Four-lobed cloverleaf. Lobes point between the x and y axes (at 45°). 0 radial nodes, <b>2 nodal planes — the xz-plane and the yz-plane</b>. Lobes alternate in phase.</div>
+        <div class="step"><b>3d<sub>z²</sub>:</b> Unique: two large lobes along the <b>z-axis</b> plus a torus (donut) ring in the xy-plane. 0 radial nodes, 2 angular nodes — but they are <b>conical nodes</b>, not flat planes.</div>
+        <span class="final">3d<sub>xy</sub> has 2 nodal planes: the xz-plane and the yz-plane</span>
+        <div class="note" style="margin-top:8px;">💡 When drawing orbitals on x-y axes: ± signs show phase, not charge. Always label which axis each lobe points along or between!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 6 ===== -->
+<div class="section s6" id="s6">
+  <div class="sh"><div class="num">6</div><h2>Wien's Displacement Law (λ<sub>max</sub>)</h2><div class="fref">λ<sub>max</sub> · T = 2.898 × 10⁻³ m·K</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 6.1 — Earth's Peak Emission <span class="pbadge">Calculation</span></div>
+      <p>Earth's average surface temperature is approximately <b>288 K</b>. Calculate Earth's peak thermal-emission wavelength, λ<sub>max</sub>, in μm. Report to two significant figures.</p>
+      <div class="fbox">λ<sub>max</sub> = (2.898 × 10⁻³ m·K) / T</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Plug in T = 288 K directly. Then convert meters to micrometers: 1 m = 10<sup>6</sup> μm.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">λ<sub>max</sub> = 2.898×10<sup>−3</sup> m·K / 288 K = 1.007 × 10<sup>−5</sup> m</div>
+        <div class="step">Convert: 1.007×10<sup>−5</sup> m × 10<sup>6</sup> μm/m = <b>10 μm</b></div>
+        <span class="final">λ<sub>max</sub> ≈ 10 μm — mid infrared</span>
+        <div class="note" style="margin-top:8px;">This is why Earth emits IR radiation, not visible light. The Sun (~5778 K) peaks at ~500 nm (visible green). Hotter = shorter wavelength.</div>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 6.2 — Find Temperature from λ<sub>max</sub> <span class="pbadge">Reverse Calculation</span></div>
+      <p>A distant star emits peak thermal radiation at λ<sub>max</sub> = <b>580 nm</b>. What is the surface temperature of the star? Is it hotter or cooler than our Sun (T<sub>☉</sub> ≈ 5778 K)?</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Rearrange Wien's law: T = (2.898×10<sup>−3</sup>) / λ<sub>max</sub>. Convert nm → m first!</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">λ<sub>max</sub> = 580 nm = 5.80 × 10<sup>−7</sup> m</div>
+        <div class="step">T = 2.898×10<sup>−3</sup> / 5.80×10<sup>−7</sup> = <b>4,997 K ≈ 5,000 K</b></div>
+        <div class="step">5,000 K &lt; 5,778 K → this star is <b>slightly cooler</b> than the Sun.</div>
+        <span class="final">T ≈ 5,000 K — slightly cooler than the Sun</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 7 ===== -->
+<div class="section s7" id="s7">
+  <div class="sh"><div class="num">7</div><h2>Ionization Energy Trends</h2><div class="fref">Large jump in IE → just removed a core electron!</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 7.1 — Identify the Element <span class="pbadge">Pattern Recognition</span></div>
+      <p>An element has the following successive ionization energies. Which element is it?</p>
+      <table>
+        <tr><th>Ionization</th><th>Energy (kJ/mol)</th></tr>
+        <tr><td>1st</td><td>578</td></tr>
+        <tr><td>2nd</td><td>1,820</td></tr>
+        <tr><td>3rd</td><td>2,750</td></tr>
+        <tr><td>4th</td><td>11,600</td></tr>
+        <tr><td>5th</td><td>14,830</td></tr>
+      </table>
+      <p>A) Na &nbsp;&nbsp; B) Mg &nbsp;&nbsp; C) Al &nbsp;&nbsp; D) Si</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Find where the <i>big jump</i> in ionization energy occurs. The jump happens when you've removed all the valence electrons and start pulling from the filled core shell. Count the ionizations before the jump = number of valence electrons.</div>
+      <div class="abox"><h4>Answer: C) Al (Aluminum)</h4>
+        <div class="step">The enormous jump occurs between the <b>3rd IE</b> (2,750 kJ/mol) and the <b>4th IE</b> (11,600 kJ/mol).</div>
+        <div class="step">This means there are <b>3 valence electrons</b> before hitting the core — placing this element in <b>Group 13</b>.</div>
+        <div class="step">In Period 3, the Group 13 element is <b>Al (Aluminum)</b>: [Ne] 3s² 3p¹</div>
+        <span class="final">Answer: C) Al — 3 valence electrons, Group 13</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 7.2 — Rank Ionization Energies <span class="pbadge">Trend Analysis</span></div>
+      <p>Rank the following elements in order of <b>increasing</b> first ionization energy (lowest → highest): &nbsp;<b>Na, F, Ne, O, N, Li</b>. Explain any exceptions to the general period trend.</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">General trend: IE increases across a period (left → right) and up a group. But there's a famous exception between N and O — think about N's half-filled 2p³ subshell!</div>
+      <div class="abox"><h4>Answer</h4>
+        <div class="step">General trend across Period 2: IE increases left → right (increasing Z<sub>eff</sub>).</div>
+        <div class="step"><b>Exception: N &gt; O</b> — Nitrogen has a half-filled 2p³ (one electron in each p orbital, all same spin). This maximizes exchange energy → extra stability → harder to remove an electron from N than from O.</div>
+        <div class="step"><b>Na and Li:</b> Both Group 1, but Na is in Period 3 (larger, more shielded) so Na &lt; Li.</div>
+        <div class="step">Full ranking: <b>Na &lt; Li &lt; O &lt; N &lt; F &lt; Ne</b></div>
+        <span class="final">Na &lt; Li &lt; O &lt; N &lt; F &lt; Ne</span>
+        <div class="note" style="margin-top:8px;">💡 Similar reasoning explains why Be &gt; B (B removes from 2p, easier than Be removing from 2s).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 8 ===== -->
+<div class="section s8" id="s8">
+  <div class="sh"><div class="num">8</div><h2>Electron Configuration (&amp; Anomalies)</h2><div class="fref">Aufbau + Pauli + Hund's | Cr &amp; Cu are exceptions!</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 8.1 — Write Configurations <span class="pbadge">Direct Practice</span></div>
+      <p>Write the full and noble-gas abbreviated electron configurations for: (a) Se (Z=34) &nbsp; (b) Xe (Z=54) &nbsp; (c) Sr (Z=38). Also: (d) What is the charge and configuration of the most stable ion of Sr?</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Fill in Aufbau order: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p… Se is in Period 4, Group 16 (6 valence electrons). Sr is in Group 2 — it will lose both s electrons to form its most stable ion.</div>
+      <div class="abox"><h4>Answers</h4>
+        <div class="step">(a) <b>Se:</b> Full: 1s²2s²2p⁶3s²3p⁶3d¹⁰4s²4p⁴ &nbsp;|&nbsp; Abbreviated: <b>[Ar] 3d¹⁰ 4s² 4p⁴</b></div>
+        <div class="step">(b) <b>Xe:</b> Full: 1s²2s²2p⁶3s²3p⁶3d¹⁰4s²4p⁶4d¹⁰5s²5p⁶ &nbsp;|&nbsp; Abbreviated: <b>[Kr] 4d¹⁰ 5s² 5p⁶</b></div>
+        <div class="step">(c) <b>Sr:</b> <b>[Kr] 5s²</b></div>
+        <div class="step">(d) Sr loses both 5s electrons → charge = <b>2+</b>, configuration = <b>[Kr]</b> (isoelectronic with krypton)</div>
+        <span class="final">Sr²⁺ with configuration [Kr]</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 8.2 — The Anomalies: Cr and Cu <span class="pbadge star">⭐ Common Confusion</span></div>
+      <p>(a) Predict the configurations of Cr (Z=24) and Cu (Z=29) using normal Aufbau rules. (b) Write their <b>actual</b> configurations. (c) Explain why these anomalies occur — and how you can recognize an anomaly on an exam.</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Count electrons for Cr: you'd normally get 3d⁴ 4s². But the actual config is different! Think about the special stability of exactly half-filled (d⁵) and fully filled (d¹⁰) subshells.</div>
+      <div class="abox"><h4>Answers</h4>
+        <div class="step">(a) <b>Predicted (wrong):</b> Cr = [Ar] 3d⁴ 4s² &nbsp;|&nbsp; Cu = [Ar] 3d⁹ 4s²</div>
+        <div class="step">(b) <b>Actual:</b> Cr = <b>[Ar] 3d⁵ 4s¹</b> &nbsp;|&nbsp; Cu = <b>[Ar] 3d¹⁰ 4s¹</b></div>
+        <div class="step">(c) <b>Why?</b> Half-filled d⁵ and fully-filled d¹⁰ have extra stability from exchange energy. One 4s electron "promotes" to 3d to reach these special configurations — the energy gained more than compensates.</div>
+        <div class="step"><b>How to spot anomalies:</b> On the periodic table, Cr and Cu are in the d-block. If an element is 1 electron away from a half-filled or fully-filled d subshell, it is likely an anomaly. For Chem 1X, just memorize Cr and Cu!</div>
+        <span class="final">Cr: [Ar] 3d⁵ 4s¹ &nbsp;|&nbsp; Cu: [Ar] 3d¹⁰ 4s¹</span>
+        <div class="note" style="margin-top:8px;">Other anomalies (for reference): Mo ([Kr] 4d⁵ 5s¹), Ag ([Kr] 4d¹⁰ 5s¹)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 9 ===== -->
+<div class="section s9" id="s9">
+  <div class="sh"><div class="num">9</div><h2>de Broglie Wavelength</h2><div class="fref">λ = h / (m · v)</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 9.1 — Baseball vs. Electron <span class="pbadge">Calculation</span></div>
+      <p>(a) A 0.145 kg baseball moves at 90.0 mph (1 mph = 0.447 m/s). Calculate its de Broglie wavelength in meters. (b) An electron travels at 2.00 × 10<sup>6</sup> m/s. Calculate its de Broglie wavelength in nm. What does the comparison tell us?<br>(h = 6.626 × 10<sup>−34</sup> J·s, m<sub>e</sub> = 9.109 × 10<sup>−31</sup> kg)</p>
+      <div class="fbox">λ = h / (m · v)</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Convert 90.0 mph to m/s first. For (b), keep units consistent (kg, m/s) and the answer will be in meters — then convert to nm.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">(a) v = 90.0 × 0.447 = 40.2 m/s &nbsp;→&nbsp; λ = 6.626×10<sup>−34</sup> / (0.145 × 40.2) = 6.626×10<sup>−34</sup> / 5.83 = <b>1.14 × 10<sup>−34</sup> m</b></div>
+        <div class="step">Far too small to observe — baseballs do not have measurable wave behavior!</div>
+        <div class="step">(b) λ = 6.626×10<sup>−34</sup> / (9.109×10<sup>−31</sup> × 2.00×10<sup>6</sup>) = 6.626×10<sup>−34</sup> / 1.822×10<sup>−24</sup> = 3.64×10<sup>−10</sup> m = <b>0.364 nm</b></div>
+        <div class="step">0.364 nm is in the X-ray range — electrons really can diffract off crystal lattices!</div>
+        <span class="final">Baseball: ~10⁻³⁴ m (zero wave behavior) | Electron: 0.364 nm (X-ray wavelength!)</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 9.2 — Find Neutron Speed <span class="pbadge">Reverse Calculation</span></div>
+      <p>Calculate the speed (in m/s) of a neutron (m = 1.67 × 10<sup>−27</sup> kg) that has a de Broglie wavelength of <b>1.50 Å</b> (angstroms). (1 Å = 1×10<sup>−10</sup> m)</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Rearrange the de Broglie equation to solve for speed: v = h / (m·λ). Remember to convert Å to meters first.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">λ = 1.50 Å = 1.50 × 10<sup>−10</sup> m</div>
+        <div class="step">v = h / (m·λ) = 6.626×10<sup>−34</sup> / (1.67×10<sup>−27</sup> × 1.50×10<sup>−10</sup>)</div>
+        <div class="step">= 6.626×10<sup>−34</sup> / 2.505×10<sup>−37</sup> = <b>2.64 × 10³ m/s</b></div>
+        <span class="final">v ≈ 2.64 × 10³ m/s (these are called "thermal neutrons")</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 10 ===== -->
+<div class="section s10" id="s10">
+  <div class="sh"><div class="num">10</div><h2>Photon Energy &amp; Wavelength Conversions</h2><div class="fref">E = hν = hc/λ &nbsp;|&nbsp; E<sub>mol</sub> = N<sub>A</sub>·E<sub>photon</sub></div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 10.1 — Four-Way Conversion Practice <span class="pbadge">Multi-part</span></div>
+      <p>(a) Find the wavelength (in nm) of light with a molar energy of <b>2.00 kJ/mol</b>.<br>(b) Find the frequency (in Hz) of infrared light with a molar energy of <b>45.0 kJ/mol</b>.<br>(c) A photon has wavelength <b>365 nm</b>. Find its energy in J.<br>(d) Convert your answer in (c) to kJ/mol.</p>
+      <div class="fbox">E<sub>per photon</sub> = E<sub>mol</sub> / N<sub>A</sub> &nbsp;|&nbsp; λ = hc/E &nbsp;|&nbsp; ν = c/λ &nbsp;|&nbsp; N<sub>A</sub> = 6.022×10²³ mol⁻¹</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">For (a) and (b): first divide kJ/mol by N<sub>A</sub> to get J per photon. For (d): multiply J/photon by N<sub>A</sub>, then divide by 1000 to get kJ/mol.</div>
+      <div class="abox"><h4>Step-by-Step Solutions</h4>
+        <div class="step">(a) E/photon = 2000 J/mol ÷ 6.022×10²³ = 3.321×10<sup>−21</sup> J &nbsp;→&nbsp; λ = 1.988×10<sup>−25</sup>/3.321×10<sup>−21</sup> = 5.99×10<sup>−5</sup> m = <b>59,900 nm</b> (far infrared)</div>
+        <div class="step">(b) E/photon = 45,000 J/mol ÷ 6.022×10²³ = 7.474×10<sup>−20</sup> J &nbsp;→&nbsp; ν = E/h = 7.474×10<sup>−20</sup>/6.626×10<sup>−34</sup> = <b>1.13 × 10<sup>14</sup> Hz</b> (infrared ✓)</div>
+        <div class="step">(c) E = hc/λ = (6.626×10<sup>−34</sup> × 3.00×10<sup>8</sup>) / (365×10<sup>−9</sup>) = <b>5.45 × 10<sup>−19</sup> J</b></div>
+        <div class="step">(d) E<sub>mol</sub> = 5.45×10<sup>−19</sup> × 6.022×10²³ = 3.28×10<sup>5</sup> J/mol = <b>328 kJ/mol</b></div>
+        <span class="final">(a) 59,900 nm &nbsp;|&nbsp; (b) 1.13×10¹⁴ Hz &nbsp;|&nbsp; (c) 5.45×10⁻¹⁹ J &nbsp;|&nbsp; (d) 328 kJ/mol</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 10.2 — He⁺ and Li²⁺ Ion Energy Levels <span class="pbadge">Hydrogen-like Ions</span></div>
+      <p>(a) Calculate the energy of He⁺ (Z=2) at n=4, in eV and in Joules. &nbsp; (b) A Li²⁺ ion (Z=3) absorbs a photon of frequency 6.66 × 10<sup>14</sup> Hz. If the final state has energy −7.85 × 10<sup>−19</sup> J, what is the energy of the initial state?<br>Use E<sub>n</sub> = −Z² × (13.598 eV) / n².</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">For (b): when a photon is absorbed, the ion gains energy: E<sub>final</sub> = E<sub>initial</sub> + E<sub>photon</sub>. Rearrange to solve for E<sub>initial</sub>.</div>
+      <div class="abox"><h4>Step-by-Step Solutions</h4>
+        <div class="step">(a) He⁺: Z=2, n=4 &nbsp;→&nbsp; E<sub>4</sub> = −(2²)(13.598)/4² = −(4 × 13.598)/16 = <b>−3.40 eV</b></div>
+        <div class="step">In Joules: −3.40 × 1.602×10<sup>−19</sup> = <b>−5.45 × 10<sup>−19</sup> J</b></div>
+        <div class="step">(b) E<sub>photon</sub> = hν = 6.626×10<sup>−34</sup> × 6.66×10<sup>14</sup> = 4.41 × 10<sup>−19</sup> J</div>
+        <div class="step">E<sub>initial</sub> = E<sub>final</sub> − E<sub>photon</sub> = −7.85×10<sup>−19</sup> − 4.41×10<sup>−19</sup> = <b>−1.23 × 10<sup>−18</sup> J</b></div>
+        <span class="final">(a) −3.40 eV / −5.45×10⁻¹⁹ J &nbsp;|&nbsp; (b) E<sub>initial</sub> = −1.23 × 10⁻¹⁸ J</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 11 ===== -->
+<div class="section s11" id="s11">
+  <div class="sh"><div class="num">11</div><h2>Stoichiometry &amp; Mole Conversions</h2><div class="fref">mol = g/M &nbsp;|&nbsp; N = mol × Nₐ</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 11.1 — The Mole Map <span class="pbadge">Fundamental</span></div>
+      <p>(a) How many formula units are in <b>58.44 g</b> of NaCl? (M = 58.44 g/mol) &nbsp;<br>(b) What is the mass of <b>3.01 × 10²³ atoms</b> of carbon? (M<sub>C</sub> = 12.01 g/mol) &nbsp;<br>(c) How many moles is <b>2.50 g</b> of water? (M<sub>H₂O</sub> = 18.02 g/mol)</p>
+      <div class="fbox">grams → moles: divide by M (g/mol) &nbsp;|&nbsp; moles → particles: multiply by 6.022×10²³</div>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Think of the mole map: Grams ÷ Molar Mass = Moles. Moles × Avogadro's Number = Particles. These two conversions are all you need for stoichiometry!</div>
+      <div class="abox"><h4>Step-by-Step Solutions</h4>
+        <div class="step">(a) mol NaCl = 58.44 / 58.44 = 1.000 mol &nbsp;→&nbsp; units = 1.000 × 6.022×10²³ = <b>6.022 × 10²³ formula units</b></div>
+        <div class="step">(b) mol C = 3.01×10²³ / 6.022×10²³ = 0.4999 mol &nbsp;→&nbsp; mass = 0.500 × 12.01 = <b>6.01 g</b></div>
+        <div class="step">(c) mol H₂O = 2.50 / 18.02 = <b>0.139 mol</b></div>
+        <span class="final">(a) 6.022×10²³ units &nbsp;|&nbsp; (b) 6.01 g &nbsp;|&nbsp; (c) 0.139 mol</span>
+      </div>
+    </div>
+    <div class="prob">
+      <div class="ptitle">Problem 11.2 — Energy Per Mole of Photons <span class="pbadge">Connecting Stoich to Quantum</span></div>
+      <p>A chemical bond absorbs near-infrared light at <b>800 nm</b>. (a) What is the energy per photon in J? (b) What is this energy per <i>mole</i> of photons in kJ/mol? This is how photon energies are tabulated in chemistry!</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Find E per photon using E = hc/λ. Then: multiply by N<sub>A</sub> = 6.022×10²³ to get J/mol, then divide by 1000 to get kJ/mol.</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">λ = 800 nm = 8.00 × 10<sup>−7</sup> m</div>
+        <div class="step">E<sub>photon</sub> = hc/λ = (6.626×10<sup>−34</sup> × 3.00×10<sup>8</sup>) / 8.00×10<sup>−7</sup> = <b>2.485 × 10<sup>−19</sup> J</b></div>
+        <div class="step">E<sub>mol</sub> = 2.485×10<sup>−19</sup> × 6.022×10²³ = 1.496×10<sup>5</sup> J/mol = <b>149.6 kJ/mol ≈ 150 kJ/mol</b></div>
+        <span class="final">E<sub>photon</sub> ≈ 2.49 × 10⁻¹⁹ J &nbsp;|&nbsp; E<sub>mol</sub> ≈ 150 kJ/mol</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 12 ===== -->
+<div class="section s12" id="s12">
+  <div class="sh"><div class="num">12</div><h2>Coulomb's Law &amp; Potential Energy</h2><div class="fref">PE = k·q₁·q₂/r &nbsp;(more negative = lower = more stable)</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem 12.1 — Rank the Ion Pairs <span class="pbadge">Conceptual</span></div>
+      <p>Rank the following ion pairs from <b>lowest to highest</b> potential energy (most stable → least stable):</p>
+      <table>
+        <tr><th>Pair</th><th>Charges</th><th>Distance</th></tr>
+        <tr><td>A</td><td>−1 and +3</td><td>100 pm</td></tr>
+        <tr><td>B</td><td>−2 and +2</td><td>120 pm</td></tr>
+        <tr><td>C</td><td>−1 and +2</td><td>150 pm</td></tr>
+        <tr><td>D</td><td>−1 and +1</td><td>200 pm</td></tr>
+      </table>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">PE ∝ (q₁ × q₂) / r. Calculate a relative value for each pair — most negative value = lowest PE = most stable. You don't need to use actual constants; just compare the ratios!</div>
+      <div class="abox"><h4>Step-by-Step Solution</h4>
+        <div class="step">Relative PE ∝ (q₁ × q₂) / r:</div>
+        <div class="step">A: (−1)(+3) / 100 = −3/100 = <b>−0.0300</b></div>
+        <div class="step">B: (−2)(+2) / 120 = −4/120 = <b>−0.0333</b> ← most negative</div>
+        <div class="step">C: (−1)(+2) / 150 = −2/150 = <b>−0.0133</b></div>
+        <div class="step">D: (−1)(+1) / 200 = −1/200 = <b>−0.0050</b></div>
+        <div class="step">Order lowest → highest PE: <b>B &lt; A &lt; C &lt; D</b></div>
+        <span class="final">Lowest → Highest PE: B &lt; A &lt; C &lt; D (B is most stable)</span>
+        <div class="note" style="margin-top:8px;">💡 Higher charge magnitude and shorter distance both lower PE (more negative). Pair B wins because of its larger charge product, even though its distance is larger than A's.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 13 ===== -->
+<div class="section s13" id="s13">
+  <div class="sh"><div class="num">🎁</div><h2>Bonus: Wave-Particle Duality &amp; Double-Slit</h2><div class="fref">Observation destroys interference!</div></div>
+  <div class="sb">
+    <div class="prob">
+      <div class="ptitle">Problem B.1 — The Double-Slit Experiment <span class="pbadge">Multiple Choice</span></div>
+      <p>Electrons pass through two slits under two conditions: <b>(1)</b> sent one at a time with no detector at the slits; <b>(2)</b> a detector records which slit each electron passes through. What pattern builds up on the screen?</p>
+      <p>A) Interference pattern in both conditions<br>B) No interference in either condition<br>C) Interference in (1), but not in (2)<br>D) Two bright bands in (1), but interference in (2)</p>
+      <button class="hbtn" onclick="tog(this)">💡 Hint</button>
+      <button class="abtn" onclick="tog(this)">✅ Show Answer</button>
+      <div class="hbox">Ask yourself: does observing the electron change its behavior? If you know which path it took, can it still have interfered with itself?</div>
+      <div class="abox"><h4>Answer: C</h4>
+        <div class="step"><b>Condition (1) — No detector:</b> Each electron acts as a wave and passes through <i>both slits simultaneously</i>, interfering with itself. An interference pattern (alternating bright/dark bands) builds up — even when sent one at a time!</div>
+        <div class="step"><b>Condition (2) — With detector:</b> Measuring which slit the electron went through forces it to behave as a particle through one slit. The interference pattern disappears — replaced by two bright bands (like bullets).</div>
+        <div class="step">The act of measurement itself changes the outcome. This is the heart of quantum weirdness!</div>
+        <span class="final">Answer: C — Interference only when the path is unobserved</span>
+        <div class="note" style="margin-top:8px;">This experiment has been done with single electrons, single photons, and even large molecules — it always gives the same result. Observation collapses the wavefunction.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>⚗️ Chem 1X Practice Problems — UCI ZotGPT &nbsp;|&nbsp; 13 sections · 25 problems</p>
+  <p style="margin-top:6px;">Good luck on your studies! Bring your toughest questions to the Zoom session. 🎓</p>
+</footer>
+
+<script>
+function tog(btn){
+  const box=btn.nextElementSibling;
+  const open=box.style.display==='block';
+  box.style.display=open?'none':'block';
+  if(btn.classList.contains('abtn')) btn.textContent=open?'✅ Show Answer':'🔼 Hide Answer';
+  if(btn.classList.contains('hbtn')) btn.textContent=open?'💡 Hint':'🔼 Hide Hint';
+}
+function toggleAll(expand){
+  document.querySelectorAll('.abox').forEach(b=>b.style.display=expand?'block':'none');
+  document.querySelectorAll('.abtn').forEach(b=>b.textContent=expand?'🔼 Hide Answer':'✅ Show Answer');
+}
+</script>
+</body>
+</html>
